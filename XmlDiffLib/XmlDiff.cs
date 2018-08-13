@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Xml;
@@ -209,8 +210,14 @@ namespace XmlDiffLib
         return false;
       }
 
-
-      return true;
+        if (xFrom.Value.Equals(xTo.Value))
+        {
+            return true;
+        }
+        Debug.WriteLine(xFrom.Value);
+        Debug.WriteLine(xTo.Value);
+        Debug.WriteLine("*************");
+      return false;
     }
 
     private List<XPathNavigator> SelectSiblings(XPathNavigator fromNav, XPathNavigator toNav, out XmlDiffNode nodeInfo)
